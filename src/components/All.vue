@@ -1,0 +1,59 @@
+<template>
+  <div>
+    <div>
+      <Header @search="getTitles" />
+    </div>
+    <div>
+        <card :films ="films" />
+    </div>
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+import Header from "../components/Header.vue";
+import card from './card.vue';
+
+
+export default {
+  name: "All",
+  components: {
+    Header,
+    card,
+  },
+
+  data() {
+    return {
+      films: [],
+      myApiKey: "52cb5d6900c357a14da82ab07f3e8045",
+      apiUrl: "https://api.themoviedb.org/3/search/",
+      searchQuery: "",
+    };
+  },
+
+  methods: {
+    MoviesSearch() {
+      axios
+        .get(this.apiUrl + "movie", {
+          params: {
+            api_key: this.myApiKey,
+            query: this.searchQuery,
+          },
+        })
+        .then((element) => {
+          this.films = element.data.results;
+        });
+    },
+
+    getTitles(searchQuery) {
+      this.searchQuery = searchQuery;
+      if (this.searchQuery != "") {
+        this.MoviesSearch();
+      }
+    },
+  },
+};
+</script>
+
+<style>
+</style>
