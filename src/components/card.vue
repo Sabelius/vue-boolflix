@@ -3,34 +3,44 @@
     <div v-for="film in films" :key="film.id" class="pt-3">
       <img class="poster" :src="posterFunction(film)" />
       <div class="title pt-2">
-        Titolo: <span class="description">{{ film.title }}</span>
+        <strong>Titolo: </strong>
+        <span class="description">{{ film.title }}</span>
       </div>
       <div class="original-title">
-        Original Title:
+        <strong>Original Title: </strong>
+
         <span class="description">{{ film.original_title }}</span>
       </div>
       <div class="language">
-        Language: <span class="description">{{ film.original_language }}</span>
+        <span class="description" v-if="flags.includes(film.original_language)">
+        <strong>Language: </strong><img  :src="require('../img/' + film.original_language + '.png')" class="flag"/></span>
+        <span v-else><strong>Language: </strong>{{ film.original_language}}</span>
       </div>
       <div class="vote">
-        Voto: <span class="description" >{{ film.vote_average }}</span>
+        <strong>Voto: </strong>
+        <span class="description">{{ film.vote_average }}</span>
       </div>
     </div>
 
     <div v-for="show in series" :key="show.id" class="pt-3">
-        <img class="poster" :src="posterFunction(show)" />
+      <img class="poster" :src="posterFunction(show)" />
       <div class="title pt-2">
-        Titolo: <span class="description">{{ show.name }}</span>
+        <strong>Titolo: </strong>
+        <span class="description">{{ show.name }}</span>
       </div>
       <div class="original-title">
-        Original Title:
+        <strong>Original Title: </strong>
+
         <span class="description">{{ show.original_name }}</span>
       </div>
       <div class="language">
-        Language: <span class="description">{{ show.original_language }}</span>
+        <span class="description" v-if="flags.includes(show.original_language)">
+        <strong>Language: </strong><img  :src="require('../img/' + show.original_language + '.png')" class="flag"/></span>
+        <span v-else><strong>Language: </strong>{{ show.original_language}}</span>
       </div>
       <div class="vote">
-        Voto: <span class="description">{{ show.vote_average }}</span>
+        <strong>Voto: </strong>
+        <span class="description">{{ show.vote_average }}</span>
       </div>
     </div>
   </section>
@@ -40,6 +50,12 @@
 export default {
   name: "card",
   props: ["films", "series"],
+
+  data() {
+    return {
+      flags: ["it", "en", "es", "fr", "de", "ja", "ko"],
+    };
+  },
 
   methods: {
     posterFunction(element) {
@@ -55,9 +71,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-img{
-    width: 300px;
+img {
+  width: 300px;
 }
-
+.flag {
+  width: 30px;
+}
 </style>
