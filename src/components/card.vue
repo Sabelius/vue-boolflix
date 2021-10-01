@@ -15,13 +15,29 @@
         Voto: <span class="description">{{ film.vote_average }}</span>
       </div>
     </div>
+
+    <div v-for="show in series" :key="show.id" class="pt-3">
+      <div class="title">
+        Titolo: <span class="description">{{ show.name }}</span>
+      </div>
+      <div class="original-title">
+        Original Title:
+        <span class="description">{{ show.original_name }}</span>
+      </div>
+      <div class="language">
+        Language: <span class="description">{{ show.original_language }}</span>
+      </div>
+      <div class="vote">
+        Voto: <span class="description">{{ show.vote_average }}</span>
+      </div>
+    </div>
   </section>
 </template>
 
 <script>
 export default {
   name: "card",
-  props: ["films"],
+  props: ["films", "series"],
 };
 </script>
 

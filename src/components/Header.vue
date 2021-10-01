@@ -1,6 +1,6 @@
 <template>
   <div>
-   <input type="text" placeholder="movies" v-model="searchQuery" @keydown.enter="$emit('search', searchQuery)">
+   <input type="text" placeholder="movies and series" v-model="searchQuery" @keydown.enter="$emit('search', searchQuery)">
    <span class="p-2">
    <button type="button" class="btn btn-primary" @click="$emit('search', searchQuery)">Search</button>
    </span>
