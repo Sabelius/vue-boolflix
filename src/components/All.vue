@@ -4,7 +4,7 @@
       <Header @search="getTitles" />
     </div>
     <div>
-      <card :films="films" :series="series"/>
+      <card :films="films" :series="series" />
     </div>
   </div>
 </template>
