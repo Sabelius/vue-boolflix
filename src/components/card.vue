@@ -61,7 +61,7 @@ export default {
     posterFunction(element) {
       if (element.poster_path != null) {
         return (
-          "https://image.tmdb.org/t/p/w600_and_h900_bestv2" +
+          "https://image.tmdb.org/t/p/w300" +
           element.poster_path
         );
       }
@@ -71,9 +71,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-img {
-  width: 300px;
-}
 .flag {
   width: 30px;
 }
