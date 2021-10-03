@@ -47,9 +47,9 @@ export default {
 
     SeriesSearch() {
       axios
-        .get("https://api.themoviedb.org/3/search/tv", {
+        .get(this.apiUrl + "tv", {
           params: {
-            api_key: "b2f2dc9b456519ffb2d7406a9523fda2",
+            api_key: this.myApiKey,
             query: this.searchQuery,
           },
         })
