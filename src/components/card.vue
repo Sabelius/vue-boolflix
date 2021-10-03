@@ -48,10 +48,10 @@
 </template>
 
 <script>
+
 export default {
   name: "card",
   props: ["films", "series"],
-
   data() {
     return {
       flags: ["it", "en", "es", "fr", "de", "ja", "ko"],
@@ -67,7 +67,7 @@ export default {
           "https://image.tmdb.org/t/p/w342" +
           element.poster_path
         );
-      }
+      } return require('../img/no-image.png');
     },
   },
 };
@@ -77,4 +77,5 @@ export default {
 .flag {
   width: 30px;
 }
+
 </style>
