@@ -32,6 +32,8 @@ export default {
   },
 
   methods: {
+
+    // funzione che trova tutti i film 
     MoviesSearch() {
       axios
         .get(this.apiUrl + "movie", {
@@ -45,6 +47,7 @@ export default {
         });
     },
 
+    // funzione che trova tutte le serie tv
     SeriesSearch() {
       axios
         .get(this.apiUrl + "tv", {
@@ -57,7 +60,8 @@ export default {
           this.series = element.data.results;
         });
     },
-
+    
+    // funzione che permette la ricerca dei film e delle serie esistenti
     getTitles(searchQuery) {
       this.searchQuery = searchQuery;
       if (this.searchQuery != "") {

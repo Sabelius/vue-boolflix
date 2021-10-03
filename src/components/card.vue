@@ -35,7 +35,8 @@
       </div>
       <div class="language">
         <span class="description" v-if="flags.includes(show.original_language)">
-        <strong>Language: </strong><img  :src="require('../img/' + show.original_language + '.png')" class="flag"/></span>
+        <strong>Language: </strong><img  :src="require('../img/' + show.original_language + '.png')" class="flag"/></span> <!-- le immagini delle bandierine vengono prese con require,
+        funzione che può essere chiamata ovunque nel programma e consente di scrivere meno codice (approfondire funzione) -->
         <span v-else><strong>Language: </strong>{{ show.original_language}}</span>
       </div>
       <div class="vote">
@@ -58,10 +59,12 @@ export default {
   },
 
   methods: {
+
+    // funzione che trova la locandina se questa esiste
     posterFunction(element) {
       if (element.poster_path != null) {
         return (
-          "https://image.tmdb.org/t/p/w300" +
+          "https://image.tmdb.org/t/p/w342" +
           element.poster_path
         );
       }
