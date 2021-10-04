@@ -21,7 +21,6 @@
               </div>
               <div class="language">
                 <span
-                  class="description"
                   v-if="flags.includes(film.original_language)"
                 >
                   <strong>Language: </strong
@@ -35,7 +34,7 @@
               </div>
               <div class="vote">
                 <strong>Voto: </strong>
-                <span class="description">
+                <span>
                   <i
                     v-for="realfilmstar in getFloatInt(film.vote_average)"
                     :key="realfilmstar"
@@ -50,7 +49,7 @@
               </div>
               <div class="overview">
                 <strong>Overview: </strong>
-                <span class="description">{{ film.overview }}</span>
+                <span class="overview">{{ film.overview }}</span>
               </div>
             </div>
           </div>
@@ -75,7 +74,6 @@
               </div>
               <div class="language">
                 <span
-                  class="description"
                   v-if="flags.includes(show.original_language)"
                 >
                   <strong>Language: </strong
@@ -89,7 +87,7 @@
               </div>
               <div class="vote">
                 <strong>Voto: </strong>
-                <span class="description">
+                <span>
                   <i
                     v-for="realshowstar in getFloatInt(show.vote_average)"
                     :key="realshowstar"
@@ -104,7 +102,7 @@
               </div>
               <div class="overview">
                 <strong>Overview: </strong>
-                <span class="description">{{ show.overview }}</span>
+                <span class="overview">{{ show.overview }}</span>
               </div>
             </div>
           </div>
@@ -151,6 +149,11 @@ export default {
 .poster {
   height: 512px;
   width: 342px;
+}
+.overview{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .flag {
   width: 30px;
