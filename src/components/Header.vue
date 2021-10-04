@@ -7,7 +7,7 @@
       <div class="col-lg-2 col-md-4 col-12 d-flex align-items-center">
         <input
           type="text"
-          id="Movies and Series"
+          placeholder="Movies and Series" 
           v-model="searchQuery"
           @keydown.enter="$emit('search', searchQuery)"
         />

@@ -20,9 +20,7 @@
                 <span>{{ film.original_title }}</span>
               </div>
               <div class="language">
-                <span
-                  v-if="flags.includes(film.original_language)"
-                >
+                <span v-if="flags.includes(film.original_language)">
                   <strong>Language: </strong
                   ><img
                     :src="require('../img/' + film.original_language + '.png')"
@@ -38,7 +36,11 @@
                   <i
                     v-for="realfilmstar in 5"
                     :key="realfilmstar"
-                    :class=" realfilmstar < getFloatInt(film.vote_average) ? 'fas fa-star' : 'far fa-star'" 
+                    :class="
+                      realfilmstar < getFloatInt(film.vote_average)
+                        ? 'fas fa-star'
+                        : 'far fa-star'
+                    "
                   ></i>
                 </span>
               </div>
@@ -68,9 +70,7 @@
                 <span>{{ show.original_name }}</span>
               </div>
               <div class="language">
-                <span
-                  v-if="flags.includes(show.original_language)"
-                >
+                <span v-if="flags.includes(show.original_language)">
                   <strong>Language: </strong
                   ><img
                     :src="require('../img/' + show.original_language + '.png')"
@@ -86,7 +86,11 @@
                   <i
                     v-for="realshowstar in 5"
                     :key="realshowstar"
-                    :class=" realshowstar < getFloatInt(show.vote_average) ? 'fas fa-star' : 'far fa-star'"
+                    :class="
+                      realshowstar < getFloatInt(show.vote_average)
+                        ? 'fas fa-star'
+                        : 'far fa-star'
+                    "
                   ></i>
                 </span>
               </div>
@@ -138,11 +142,11 @@ export default {
 }
 .poster {
   height: 512px;
-  width: 342px;
+  width: 100%;
 }
 .title,
 .original-title,
-.overview{
+.overview {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

@@ -32,8 +32,8 @@ export default {
   },
 
   methods: {
-
-    // funzione che trova tutti i film 
+    
+    // funzione che trova tutti i film
     MoviesSearch() {
       axios
         .get(this.apiUrl + "movie", {
@@ -60,7 +60,7 @@ export default {
           this.series = element.data.results;
         });
     },
-    
+
     // funzione che permette la ricerca dei film e delle serie esistenti
     getTitles(searchQuery) {
       this.searchQuery = searchQuery;
@@ -69,13 +69,10 @@ export default {
         this.SeriesSearch();
       }
     },
-
   },
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../style/variables.scss";
-
-
 </style>
