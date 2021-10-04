@@ -13,11 +13,11 @@
             <div class="content-info">
               <div class="title">
                 <strong>Titolo: </strong>
-                <span class="description">{{ film.title }}</span>
+                <span>{{ film.title }}</span>
               </div>
               <div class="original-title">
                 <strong>Original Title: </strong>
-                <span class="description">{{ film.original_title }}</span>
+                <span>{{ film.original_title }}</span>
               </div>
               <div class="language">
                 <span
@@ -49,7 +49,7 @@
               </div>
               <div class="overview">
                 <strong>Overview: </strong>
-                <span class="overview">{{ film.overview }}</span>
+                <span>{{ film.overview }}</span>
               </div>
             </div>
           </div>
@@ -66,11 +66,11 @@
             <div class="content-info">
               <div class="title">
                 <strong>Titolo: </strong>
-                <span class="description">{{ show.name }}</span>
+                <span>{{ show.name }}</span>
               </div>
               <div class="original-title">
                 <strong>Original Title: </strong>
-                <span class="description">{{ show.original_name }}</span>
+                <span>{{ show.original_name }}</span>
               </div>
               <div class="language">
                 <span
@@ -150,6 +150,8 @@ export default {
   height: 512px;
   width: 342px;
 }
+.title,
+.original-title,
 .overview{
   white-space: nowrap;
   overflow: hidden;
