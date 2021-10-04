@@ -36,14 +36,9 @@
                 <strong>Voto: </strong>
                 <span>
                   <i
-                    v-for="realfilmstar in getFloatInt(film.vote_average)"
+                    v-for="realfilmstar in 5"
                     :key="realfilmstar"
-                    class="fas fa-star"
-                  ></i>
-                  <i
-                    v-for="maxfilmstar in 5 - getFloatInt(film.vote_average)"
-                    :key="maxfilmstar"
-                    class="far fa-star"
+                    :class=" realfilmstar < getFloatInt(film.vote_average) ? 'fas fa-star' : 'far fa-star'" 
                   ></i>
                 </span>
               </div>
@@ -89,14 +84,9 @@
                 <strong>Voto: </strong>
                 <span>
                   <i
-                    v-for="realshowstar in getFloatInt(show.vote_average)"
+                    v-for="realshowstar in 5"
                     :key="realshowstar"
-                    class="fas fa-star"
-                  ></i>
-                  <i
-                    v-for="maxshowstar in 5 - getFloatInt(show.vote_average)"
-                    :key="maxshowstar"
-                    class="far fa-star"
+                    :class=" realshowstar < getFloatInt(show.vote_average) ? 'fas fa-star' : 'far fa-star'"
                   ></i>
                 </span>
               </div>
