@@ -4,17 +4,17 @@
       <div class="col-10">
         <img :src="require('../img/boolflix.png')" class="header-logo" />
       </div>
-      <div class="col-lg-2 col-md-4 col-sm-5 col-6 d-flex align-items-center">
+      <div class="col-lg-2 col-md-4 col-12 d-flex align-items-center">
         <input
           type="text"
-          placeholder="Movies and Series"
+          id="Movies and Series"
           v-model="searchQuery"
           @keydown.enter="$emit('search', searchQuery)"
         />
         <span class="p-2">
           <button
             type="button"
-            class="btn btn-primary "
+            class="btn btn-primary"
             @click="$emit('search', searchQuery)"
           >
             <i class="fas fa-search"></i>
@@ -46,8 +46,8 @@ div {
 .header-logo {
   width: 200px;
 }
-input{
+input {
   height: 30px;
+  width: 200px;
 }
-
 </style>
