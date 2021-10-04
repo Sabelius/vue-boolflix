@@ -69,9 +69,13 @@ export default {
         this.SeriesSearch();
       }
     },
+
   },
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import "../style/variables.scss";
+
+
 </style>

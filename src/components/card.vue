@@ -1,5 +1,7 @@
 <template>
   <section>
+
+    <!-- film -->
     <div v-for="film in films" :key="film.id" class="pt-3">
       <img class="poster" :src="posterFunction(film)" />
       <div class="title pt-2">
@@ -8,20 +10,23 @@
       </div>
       <div class="original-title">
         <strong>Original Title: </strong>
-
         <span class="description">{{ film.original_title }}</span>
       </div>
       <div class="language">
         <span class="description" v-if="flags.includes(film.original_language)">
         <strong>Language: </strong><img  :src="require('../img/' + film.original_language + '.png')" class="flag"/></span>
-        <span v-else><strong>Language: </strong>{{ film.original_language}}</span>
+        <span v-else><strong>Language: </strong>{{ film.original_language }}</span>
       </div>
       <div class="vote">
         <strong>Voto: </strong>
-        <span class="description">{{ film.vote_average }}</span>
+        <span class="description">
+          <i v-for="realfilmstar in getFloatInt(film.vote_average)" :key="realfilmstar" class="fas fa-star"></i>
+          <i v-for="maxfilmstar in (5 - getFloatInt(film.vote_average))" :key="maxfilmstar" class="far fa-star"></i>
+        </span>
       </div>
     </div>
-
+    
+    <!-- serie tv -->
     <div v-for="show in series" :key="show.id" class="pt-3">
       <img class="poster" :src="posterFunction(show)" />
       <div class="title pt-2">
@@ -30,18 +35,19 @@
       </div>
       <div class="original-title">
         <strong>Original Title: </strong>
-
         <span class="description">{{ show.original_name }}</span>
       </div>
       <div class="language">
         <span class="description" v-if="flags.includes(show.original_language)">
-        <strong>Language: </strong><img  :src="require('../img/' + show.original_language + '.png')" class="flag"/></span> <!-- le immagini delle bandierine vengono prese con require,
-        funzione che può essere chiamata ovunque nel programma e consente di scrivere meno codice (approfondire funzione) -->
-        <span v-else><strong>Language: </strong>{{ show.original_language}}</span>
+        <strong>Language: </strong><img  :src="require('../img/' + show.original_language + '.png')" class="flag"/></span>
+        <span v-else><strong>Language: </strong>{{ show.original_language }}</span>
       </div>
       <div class="vote">
         <strong>Voto: </strong>
-        <span class="description">{{ show.vote_average }}</span>
+        <span class="description">
+          <i v-for="realshowstar in getFloatInt(show.vote_average)" :key="realshowstar" class="fas fa-star"></i>
+          <i v-for="maxshowstar in (5 - getFloatInt(show.vote_average))" :key="maxshowstar" class="far fa-star"></i>
+          </span>
       </div>
     </div>
   </section>
@@ -69,13 +75,23 @@ export default {
         );
       } return require('../img/no-image.png');
     },
+
+    // funzione per rendere il voto un intero 
+     getFloatInt(element){
+       return Math.floor(element / 2);
+     }
   },
 };
 </script>
 
 <style lang="scss" scoped>
+@import "../style/variables.scss";
+
 .flag {
   width: 30px;
+}
+.fa-star{
+  color: $color-star;
 }
 
 </style>
