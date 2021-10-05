@@ -1,10 +1,10 @@
 <template>
   <div>
     <div>
-      <Header @search="getTitles" />
+      <Header @search="getTitles" :genres="genres" @change="searchGenre"/>
     </div>
     <div>
-      <card :films="films" :series="series" />
+      <card :films="getGenreMovieId" :series="getGenreSeriesId" />
     </div>
   </div>
 </template>
@@ -25,6 +25,8 @@ export default {
     return {
       films: [],
       series: [],
+      genres: [],
+      selectedGenre: "",
       myApiKey: "52cb5d6900c357a14da82ab07f3e8045",
       apiUrl: "https://api.themoviedb.org/3/search/",
       searchQuery: "",
@@ -32,7 +34,6 @@ export default {
   },
 
   methods: {
-    
     // funzione che trova tutti i film
     MoviesSearch() {
       axios
@@ -69,7 +70,71 @@ export default {
         this.SeriesSearch();
       }
     },
+    
+    searchGenre(genre){
+      this.selectedGenre = genre;
+      console.log(genre)
+    }
   },
+
+  mounted() {
+    // vengono richiamati i generi dei film
+    axios
+      .get("https://api.themoviedb.org/3/genre/movie/list", {
+        params: {
+          api_key: this.myApiKey,
+          query: this.searchQuery,
+        },
+      })
+      .then((element) => {
+        this.genres = element.data.genres;
+      });
+
+    //  vengono richiamati i generi delle serie
+      axios
+      .get("https://api.themoviedb.org/3/genre/tv/list", {
+        params: {
+          api_key: this.myApiKey,
+          query: this.searchQuery,
+        },
+      })
+      .then((element) => {
+        this.genres = element.data.genres;
+      });
+  },
+
+  computed: {
+
+    // funzione che seleziona i film in base al genere
+    getGenreMovieId(){
+      let newList = [];
+      if (this.selectedGenre != ""){
+        newList = this.films.filter(
+          (element) =>{
+           return element.genre_ids.includes(this.selectedGenre)
+          } 
+        );
+      }else{
+        return this.films;
+      }
+      return newList;
+    },
+
+    // funzione che seleziona le serie in base al genere
+    getGenreSeriesId(){
+      let newList = [];
+      if (this.selectedGenre != ""){
+        newList = this.series.filter(
+          (element) =>{
+           return element.genre_ids.includes(this.selectedGenre)
+          } 
+        );
+      }else{
+        return this.series;
+      }
+      return newList;
+    }
+  }
 };
 </script>
 

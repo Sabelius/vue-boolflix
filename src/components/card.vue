@@ -12,7 +12,7 @@
             <img class="poster img-fluid" :src="posterFunction(film)" />
             <div class="content-info">
               <div class="title">
-                <strong>Titolo: </strong>
+                <strong>Title: </strong>
                 <span>{{ film.title }}</span>
               </div>
               <div class="original-title">
@@ -31,7 +31,7 @@
                 >
               </div>
               <div class="vote">
-                <strong>Voto: </strong>
+                <strong>Vote: </strong>
                 <span>
                   <i
                     v-for="realfilmstar in 5"
@@ -127,7 +127,7 @@ export default {
 
     // funzione per rendere il voto un intero
     getFloatInt(element) {
-      return Math.floor(element / 2);
+      return Math.ceil(element / 2);
     },
   },
 };
